@@ -7,6 +7,11 @@ Dockerfile
 BackEnd/phpunit.xml
 BackEnd/tests/
 BackEnd/specs
+BackEnd/vendor
+
+FrontEnd/node_modules
+FrontEnd/dist
+FrontEnd/documentation
 
 System/
 !System/ssl

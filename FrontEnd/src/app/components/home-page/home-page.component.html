@@ -1,0 +1,48 @@
+<h1 align="center">Welcome to HostMyDocs !</h1>
+
+
+
+<div *ngIf="this.projects.length == 0; then loading; else grid;"></div>
+
+<ng-template #loading>
+    <mat-spinner [color]="'accent'"></mat-spinner>
+</ng-template>
+
+<ng-template #grid>
+    <mat-form-field [color]="'accent'">
+        <input matInput type="text" placeholder="Filter projects" [(ngModel)]="filterValue">
+        <button mat-button *ngIf="filterValue" matSuffix mat-icon-button aria-label="Clear" (click)="filterValue=''">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-grid-list [cols]="6" [rowHeight]="'5:4'">
+        <mat-grid-tile *ngFor="let project of projects | filterProjects:filterValue">
+            <hmd-project-card [project]="project"></hmd-project-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</ng-template>
+
+<!-- <button mat-fab [matMenuTriggerFor]="docMenu" style="position: absolute; bottom: 15px; right: 15px;">
+    <mat-icon>more_vert</mat-icon>
+</button>
+
+<mat-menu #docMenu="matMenu">
+    <button mat-menu-item>
+        <mat-icon>cloud_download</mat-icon>
+        <span>Download</span>
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="downloadMenu">
+        <mat-icon>link</mat-icon>
+        <span>Get link</span>
+    </button>
+</mat-menu>
+
+<mat-menu #downloadMenu="matMenu">
+    <button mat-menu-item>
+        <span>To this page</span>
+    </button>
+    <button mat-menu-item>
+        <span>To standalone documentation</span>
+    </button>
+</mat-menu> -->

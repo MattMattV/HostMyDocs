@@ -1,0 +1,40 @@
+<mat-card>
+    <mat-card-title>
+        {{ project.name }}
+    </mat-card-title>
+
+    <mat-card-content>
+        <mat-form-field>
+            <mat-select placeholder="Version" [(value)]="selectedVersion">
+                <mat-option *ngFor="let version of project.versions" [value]="version">
+                    {{ version.number }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field>
+            <mat-select placeholder="Language" [(value)]="selectedLanguage" [disabled]="this.selectedVersion.languages.length == 1">
+                <mat-option *ngFor="let language of selectedVersion.languages" [value]="language">
+                    {{ language.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+        <button mat-button>OPEN</button>
+
+        <button mat-icon-button color="accent" [matMenuTriggerFor]="cardMenu">
+            <mat-icon aria-label="Project actions">more_vert</mat-icon>
+        </button>
+
+        <mat-menu #cardMenu="matMenu">
+            <button mat-menu-item>
+                <mat-icon>delete</mat-icon>
+                <span>Delete this version</span>
+            </button>
+        </mat-menu>
+    </mat-card-actions>
+</mat-card>

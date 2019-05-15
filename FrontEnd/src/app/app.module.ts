@@ -1,39 +1,39 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+
+import { MaterialModule } from './material.module';
 
 import { AppRoutingModule } from './app-routing.module';
-import { TrustUrlPipe } from './pipes/trust-url.pipe';
+
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { ProjectCardComponent } from './components/project-card/project-card.component';
+
+import { ProjectsService } from './services/projects.service';
+
 import { FilterProjectsPipe } from './pipes/filter-projects.pipe';
-import { AppRootComponent } from './components/app-root/app-root.component';
-import { ClarityModule } from '@clr/angular';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeViewComponent } from './components/home-view/home-view.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { ProjectsTreeComponent } from './components/projects-tree/projects-tree.component';
+import { ClipboardDirective } from './directives/clipboard.directive';
 import { FormsModule } from '@angular/forms';
-import { ClipboardDirective } from './directives/tsi-clipboard.directive';
 
 @NgModule({
     declarations: [
         ClipboardDirective,
-        TrustUrlPipe,
         FilterProjectsPipe,
-        AppRootComponent,
-        HomeViewComponent,
-        LandingPageComponent,
-        ProjectsTreeComponent
+        ProjectCardComponent,
+        HomePageComponent
     ],
     imports: [
-        FormsModule,
-        BrowserAnimationsModule,
         BrowserModule,
-        ClarityModule,
-        AppRoutingModule,
-        HttpClientModule
+        CommonModule,
+        FormsModule,
+        MaterialModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        AppRoutingModule
     ],
-    providers: [],
-    bootstrap: [AppRootComponent],
-    exports: [TrustUrlPipe, FilterProjectsPipe]
+    providers: [ProjectsService],
+    bootstrap: [HomePageComponent]
 })
 export class AppModule { }

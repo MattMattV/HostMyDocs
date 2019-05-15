@@ -4,13 +4,13 @@
         "directive-selector": [
             true,
             "attribute",
-            "tsi",
+            "hmd",
             "camelCase"
         ],
         "component-selector": [
             true,
             "element",
-            "tsi",
+            "hmd",
             "kebab-case"
         ]
     }

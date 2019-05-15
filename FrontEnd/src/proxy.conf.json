@@ -1,6 +1,6 @@
 {
     "/BackEnd": {
-        "target": "http://localhost:3000",
+        "target": "http://internal-docs.trace-software.com",
         "secure": false
     },
     "/data": {

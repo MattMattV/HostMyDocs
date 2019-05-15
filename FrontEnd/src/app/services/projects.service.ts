@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Project } from '../models/Project';
+
 import { Observable } from 'rxjs';
+
+import { Project } from '../models/Project';
 
 @Injectable({
   providedIn: 'root'
@@ -9,18 +11,16 @@ import { Observable } from 'rxjs';
 export class ProjectsService {
 
     /**
-       * Url where we will request projects
-       */
-    private getProjectsUrl = '/BackEnd/listProjects';
-
-    public projects: Project[];
+     * Url where we will request projects
+     */
+    private readonly getProjectsUrl = '/BackEnd/listProjects';
 
     constructor(private http: HttpClient) { }
 
     /**
-     * Requesting the BackEnd to provide an array of Project to any component
+     * Initiating request to BackEnd to fetch list of projects
      */
-    public getProjects(): Observable<HttpResponse<Project[]>> {
-        return this.http.get<Project[]>(this.getProjectsUrl, {observe: 'response'});
+    public getProjects(): Observable<Project[]> {
+        return this.http.get<Project[]>(this.getProjectsUrl);
     }
 }

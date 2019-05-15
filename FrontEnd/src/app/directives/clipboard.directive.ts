@@ -2,13 +2,13 @@ import * as Clipboard from 'clipboard';
 import { EventEmitter, Directive, ElementRef, OnDestroy, OnInit, Output } from '@angular/core';
 
 @Directive({
-  selector: '[tsiClipboard]'
+  selector: '[hmdClipboard]'
 })
 export class ClipboardDirective implements OnInit, OnDestroy {
 
     /**
-       * Local instance of Clipboard.js
-       */
+     * Local instance of Clipboard.js
+     */
     clipboard: Clipboard;
 
     /**
